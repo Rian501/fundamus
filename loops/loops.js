@@ -1,28 +1,52 @@
-// FOR LOOPS
+const DOMcontainer = document.querySelector('#mainContainer');
+const docFrag = document.createDocumentFragment();
 
-//for loop to console log
-//to print to DOM -- show one where only the last one works and also where the whole set gets concatted?
-//for loop to build a string
-//
+const instructorsArr = ["Jisie", "Emily", "Jordan", "Greg", "Steve", "Joe", "Brenda", "Dr. T", "Susan", "Kimmy", "Arwa"];
+
+
+// FOR LOOPS
+let ulElement = document.createElement('ul');
+
+for (let whaaat = 0; whaaat < instructorsArr.length; whaaat++) {
+  let listEl = document.createElement('li');
+  listEl.innerHTML = instructorsArr[whaaat];
+  listEl.id = `important${whaaat}`;
+  listEl.className = "teachers NSS";
+  ulElement.appendChild(listEl);
+}
+
+docFrag.appendChild(ulElement);
+DOMcontainer.appendChild(docFrag);
+
+
+const Emily = {
+  name: "Emily",
+  glasses: true,
+  hair: "brown",
+  location: "Nashville",
+  age: 32
+}
 
 
 // FOR ... IN LOOPS
+for (let key in Emily) {
+  // console.log('each value', Emily[key]);
+  // console.log('type of each value', typeof Emily[key]);
+}
 
 
+//FOR EACH
+const studentArr = ["Jewel", "Joey", "Shu", "Adelaide", "Leah", "Emily", "Will", "Vik", "Michael"];
 
 
-
-// NESTED LOOPS - this gets complicated fast!
-
-
-//COMPLEX OBJECT BELOW... just for practice maybe -- the object is in JSON format!
-
-// GOT THIS OBJECT FROM:  https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJRXQ7c9FnZIgRgcixIrzIBAY&key=AIzaSyDBQnCK-6rLoNTLp6okHWItg_v5Lvs5Pho
+function studentPop (eachperson, index, wholeArray) {
+  // console.log("who is person? index, each person, wholeArr, original Arr", index, eachperson, wholeArray, studentArr);
+  studentArr.pop();
+}
 
 
-
-
-const placeObject = {
+//this is an EXTRA LARGE OBJECT...just for funsies!
+const placeObj = {
   "html_attributions": [],
   "result": {
     "address_components": [
@@ -355,4 +379,24 @@ const placeObject = {
     "website": "http://www.baristaparlor.com/"
   },
   "status": "OK"
+}
+
+console.log('place object from Google', placeObj.result);
+let placeInfo = placeObj.result;
+
+
+
+for (let key in placeInfo) {
+  if (key === 'opening_hours') {
+  } else if (key === 'photos') {
+    let photosArr = placeInfo[key];
+    for (let i = 0; i < photosArr.length; i++) {
+      const refToPhoto = photosArr[i].photo_reference;
+      let currentURL = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${refToPhoto}`;
+      console.log('URL for picture', currentURL);
+      const image = document.createElement('img');
+      image.setAttribute('src', currentURL);
+      docFrag.appendChild(image);
+    }
+  }
 }
