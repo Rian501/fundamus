@@ -1,0 +1,34 @@
+{
+  "media": [
+    {
+      "title": "A Court of Mist and Fury",
+      "type": "book",
+      "id": 1,
+      "finished": "false"
+    },
+    {
+      "title": "Avengers",
+      "type": "movie",
+      "id": 2,
+      "finished": "false"
+    },
+    {
+      "title": "Acceptance",
+      "type": "book",
+      "id": 3,
+      "finished": "false"
+    },
+    {
+      "title": "Dream More",
+      "type": "book",
+      "id": 4,
+      "finished": "true"
+    },
+    {
+      "title": "Authority",
+      "type": "book",
+      "id": 5,
+      "finished": "true"
+    }
+  ]
+}
